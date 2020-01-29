@@ -1,1 +1,6 @@
 flask
+pyopenssl
+flask-sqlalchemy
+flask_wtf
+flask-login
+flask-bcrypt

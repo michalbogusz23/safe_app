@@ -1,0 +1,15 @@
+<h1>Logowanie</h1>
+<form method="POST" action="/login"> 
+    <input name="username" type="text" placeholder="login">
+    <input name="password" type="password" placeholder="*****">
+    <input type="submit">
+</form>
+{% with messages = get_flashed_messages() %}
+  {% if messages %}
+    <ul class=flashes>
+    {% for message in messages %}
+      <li>{{ message }}</li>
+    {% endfor %}
+    </ul>
+  {% endif %}
+{% endwith %}

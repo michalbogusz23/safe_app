@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+    <div class="row">
+        <div class="column">
+            <h1>Czesc {{ current_user.username }}!</h1>
+            <h2>Twoje notatki:</h2>
+            <div id="notes">
+                {% for note in notes %}
+                <div>
+                    <p><b>{{ note.author }}</b>: {{ note.body }}</p>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+
+        <div class="column">
+            <p3>Dodaj notatke</p3>
+            <form action="{{ url_for('addnote') }}" method="POST">
+                Notatka: <input type="text" name="note" placeholder="Notatka">
+                <br><br>
+                <input onclick="document.getElementById('receiver').disabled ^= true;" name="check"type="checkbox" checked> Do wszystkich?
+                <br><br>
+                <input type="text" name="receiver" id="receiver" placeholder="Adresat" disabled="false" value="">
+                <br><br>
+                <input type="hidden" name="author" value="{{ current_user.username }}">
+                <input type="submit" value="Dodaj notatke">
+            </form>
+            
+            <hr>
+            <div class="row">
+                <div class="column">
+                    <form action="{{ url_for('changepassform') }}">
+                        <input type="submit" value="Zmien haslo" />
+                    </form>
+                </div>
+                <div class="column">
+                    <form action="{{ url_for('logout') }}">
+                        <input type="submit" value="Wyloguj" />
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
